@@ -5,10 +5,17 @@ RUN apt-get update && apt-get install -y \
     libcurl4-gnutls-dev \
     libpng-dev \
     zlib1g-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libgd-dev \
+    jpegoptim optipng pngquant gifsicle \
     git \
     zip \
     unzip \
     && rm -rf /var/lib/apt/lists/* \
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install mysqli pdo_mysql curl gd pcntl \
     && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
