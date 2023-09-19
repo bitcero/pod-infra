@@ -14,9 +14,10 @@ RUN apt-get update && apt-get install -y \
     git \
     zip \
     unzip \
+    libxml2-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
-    && docker-php-ext-install mysqli pdo_mysql curl gd pcntl \
+    && docker-php-ext-install mysqli pdo_mysql curl gd pcntl soap \
     && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && php -r "unlink('composer-setup.php');"
