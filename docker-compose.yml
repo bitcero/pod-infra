@@ -8,8 +8,8 @@ services:
     ports:
       - 80:80
     volumes:
-      - ../pod/public:/var/www/html
-      - ../pod:/var/www
+      - ../pod/public:/var/www/html:z
+      - ../pod:/var/www:z
     networks:
       - backend
     depends_on:
